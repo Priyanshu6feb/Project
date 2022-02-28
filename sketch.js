@@ -1,117 +1,46 @@
-var garden,rabbit,apple,orangeL,redL;
-var gardenImg,rabbitImg,carrotImg,orangeImg,redImg;
-
-
-function preload(){
-  gardenImg = loadImage("garden.png");
-  rabbitImg = loadImage("rabbit.png");
-  appleImg = loadImage("apple.png");
-  orangeImg = loadImage("orangeLeaf.png");
-  redImg = loadImage("redImage.png");
-}
-
-
+var input,heading;
 function setup(){
-  
-  createCanvas(400,400);
-// Moving background
-garden=createSprite(200,200);
-garden.addImage(gardenImg);
+  createCanvas (300,200);
+  background (178,255,102);
 
+  input=createInput();
+  input.position(5,60);
 
-//creating boy running
-rabbit = createSprite(160,340,20,20);
-rabbit.scale =0.09;
-rabbit.addImage(rabbitImg);
-}
+  heading=createElement ('h4','enter any alphabet');
+  heading.position(5,20);
 
-function draw() {
-  background(0);
-  
-  // boy moving on Xaxis with mouse'
-  rabbit.x = World.mouseX;
-  
-  edges= createEdgeSprites();
-  rabbit.collide(edges);
-  
-   drawSprites();
-
-   
-   
-   
-  
-// var select_sprites = Math(random(1,3));
-
-// var select_sprites = Math.random(random(1,3));
-
-// var select_sprites = Math.round(1,3);
-
-var select_sprites = Math.round(random(1,3));
-
-  
-  // if (frameCount % 50 == 0) {
-  //   if (select_sprites == 1) {
-  //     createApples();
-  //   } else if (select_sprites == 2) {
-  //     createOrange();
-  //   }else {
-  //     createRed();
-  //   }
-  // }
-
-   if (frameCount % 80 == 0) {
-     if (select_sprites == 1) {
-       createApples();
-     } else if (select_sprites == 2) {
-       createOrange();
-    }
-   }
-
-  // if (frameCount / 80 == 0) {
-  //   if (select_sprites == 1) {
-  //     createApples();
-  //   } else if (select_sprites == 2) {
-  //     createOrange();
-  //   }else {
-  //     createRed();
-  //   }
-  // }
-
-  // if (frameCount % 80 = 0) {
-  //   if (select_sprites == 1) {
-  //     createApples();
-  //   } else if (select_sprites == 2) {
-  //     createOrange();
-  //   }else {
-  //     createRed();
-  //   }
-  // }
+  textAlign(CENTER);
+  textSize(50);
 
 
 
 }
+function draw(){
+  const value=input.value();
+  switch(value){
+    case 'a':
+      console.log("it is vowel");
+      break;
 
-function createApples() {
-apple = createSprite(random(50, 350),40, 10, 10);
-apple.addImage(appleImg);
-apple.scale=0.07;
-apple.velocityY = 3;
-apple.lifetime = 150;
-  
-}
+      case 'e':
+        console.log("it is vowel");
+        break;
 
-function createOrange() {
-orangeL = createSprite(random(50, 350),40, 10, 10);
-orangeL.addImage(orangeImg);
-orangeL.scale=0.08;
-orangeL.velocityY = 3;
-orangeL.lifetime = 150;
-}
+        case 'i':
+          console.log("it is vowel");
+          break;
 
-function createRed() {
-redL = createSprite(random(50, 350),40, 10, 10);
-redL.addImage(redImg);
-redL.scale=0.06;
-  redL.velocityY = 3;
-  redL.lifetime = 150;
+          case 'o':
+            console.log("it is vowel");
+            break;
+
+            case 'u':
+              console.log("it is vowel");
+              break;
+
+              default:
+                console.log ("pls enter any other character");
+
+
+  }
 }
