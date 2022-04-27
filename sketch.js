@@ -202,8 +202,8 @@ function redCyclists(){
 //  distance = 0;
 // }
 
-function reset{
- gameState = PLAY;
+function reset(){
+  gameState = PLAY;
   gameOver.visible = true;
   mainCyclist.addAnimation("SahilRunning",mainRacerImg1);
   
@@ -212,7 +212,9 @@ function reset{
   redCG.destroy();
   
  distance = 0;
- }
+}
+ 
+ 
 
 //function reset(){
 //  gameState = PLAY;
