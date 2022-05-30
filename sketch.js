@@ -1,69 +1,59 @@
-
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
-const Body = Matter.Body;
+const Constraint = Matter.Constraint;
 
-var ball;
+var engine, world;
+var canvas;
+var palyer, playerBase, playerArcher;
+var baseimage;
 
-function preload()
-{
-	
+function preload() {
+  backgroundImg = loadImage("./assets/background.png");
+  baseimage = loadImage("./assets/base.png");
+  playerimage = loadImage("./assets/player.png");
 }
 
 function setup() {
-	createCanvas(800, 700);
+  canvas = createCanvas(windowWidth, windowHeight);
 
+  engine = Engine.create();
+  world = engine.world;
+  angleMode(DEGREES);
 
-	engine = Engine.create();
-	world = engine.world;
+  var options = {
+    isStatic: true
+  };
 
-	//Create the Bodies Here.
-	var ball_option={
-		isStatic:false,
-		restitution:0.3,
-		friction:0,
-		density:1.2
+  playerBase = Bodies.rectangle(200, 350, 180, 150, options);
+  World.add(world, playerBase);
 
-		
+  player = Bodies.rectangle(250, playerBase.position.y - 160, 50, 180, options);
+  World.add(world,player)
 
-	}
+ // playerArcher = new ( 340, playerBase.position.y - 112, 120, 120);
+ playerArcher = new PlayerArcher( 340, playerBase.position.y - 112, 120, 120);
+ // playerArcher =  PlayerArcher( 340, playerBase.position.y - 112, 120, 120);
+ // playerArcher = new PlayerArcher( );
 
-	ball=Bodies.circle(200,100,20,ball_options);
-	World.add(world,ball);
-
-	
-
-
-	Engine.run(engine);
-  
 }
-
 
 function draw() {
-  rectMode(CENTER);
-  background(0);
+  background(backgroundImg);
+  image(baseimage,playerBase.position.x,playerBase.position.y,180,150)
+  image(playerimage,player.position.x,player.position.y,50,180)
 
-  groundObj.display();
-
-  groundObj=new ground(width/2,670,width20);
-  leftSide = new ground(1100,600,20,120);
-
-  groundObj=new ground(width/2,670,width20);
-  rightSide = new ground(1100,600,20,120);
+  Engine.update(engine);
 
 
+  // playerArcher.display;
+  // playerArcherdisplay();
+   playerArcher.display();
+  // display();
 
-  
-  drawSprites();
- 
+  // Title
+  fill("#FFFF");
+  textAlign("center");
+  textSize(40);
+  text("EPIC ARCHERY", width / 2, 100);
 }
-
-function keyPressed() {
-	if(keyCode === UP_ARROW){
-
-	}
-}
-
-
-
